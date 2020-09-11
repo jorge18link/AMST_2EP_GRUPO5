@@ -40,6 +40,8 @@ public class HabilityHeroActivity extends AppCompatActivity {
     private LinearLayout contenedor;
 
     private JSONObject datosGrafico;
+    final ArrayList<String> xAxisLabel = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,15 @@ public class HabilityHeroActivity extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(),idHero,Toast.LENGTH_LONG).show();
 
+        xAxisLabel.add("Inteligencia");
+        xAxisLabel.add("Fuerza");
+        xAxisLabel.add("Velocidad");
+        xAxisLabel.add("Durabilidad");
+        xAxisLabel.add("Poder");
+        xAxisLabel.add("Combate");
+
         ConsultarHeroe(idHero);
+
 
     }
 
@@ -121,6 +131,7 @@ public class HabilityHeroActivity extends AppCompatActivity {
     private void actualizarGrafico(JSONObject data){
         int count = 0;
         ArrayList<BarEntry> dato_temp = new ArrayList<>();
+
         try {
             dato_temp.add(new BarEntry(count, Integer.valueOf(data.getString("intelligence"))));
             count++;
